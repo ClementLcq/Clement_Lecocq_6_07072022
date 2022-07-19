@@ -6,7 +6,7 @@ const router = express.Router();
 const sauceCtrl = require('../controllers/sauces.controller');
 const auth = require('../middleware/auth.middleware');
 /*const verifyUser = require("../middleware/verifyUser");
-const multer = require("../middleware/multerFunction");*/
+const multer = require("../middleware/multerFunctions");*/
 
 // Routes CRUD
 
