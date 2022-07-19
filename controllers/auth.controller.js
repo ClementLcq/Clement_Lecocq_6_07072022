@@ -3,10 +3,12 @@ const jwt = require('jsonwebtoken');
 
 const User = require('../models/User');
 
-/*exports.signup = (req, res, next) => {
+const emailValidator = require('email-validator');
+
+exports.signup = (req, res, next) => {
     // Mise en place d'une condition pour vérifier la validité de l'adresse mail
     // + salage / hash du mot de passe
-    if (validator.isEmail(req.body.email, { blacklisted_chars: '$="' })) {
+    if (emailValidator.validate(req.body.email)) {
         bcrypt.hash(req.body.password, 10)
             .then(hash => {
                 const user = new User({
@@ -20,9 +22,9 @@ const User = require('../models/User');
     } else {
         res.status(400).json({ error: "Le format de l'adresse email est invalide" });
     }
-};*/
+};
 
-exports.signup = (req, res, next) => {
+/*exports.signup = (req, res, next) => {
     bcrypt.hash(req.body.password, 10)
         .then(hash => {
             const user = new User({
@@ -31,10 +33,10 @@ exports.signup = (req, res, next) => {
             });
             user.save()
                 .then(() => res.status(201).json({ message: 'Utilisateur créé' }))
-                .catch(error => res.status(400).json({ error }));
+                .catch(error => res.status(400).json({ errorMsg }));
         })
-        .catch(error => res.status(500).json({ error }))
-};
+        .catch(error => res.status(500).json({ errorMsg }))
+};*/
 
 exports.login = (req, res, next) => {
     User.findOne({ email: req.body.email })
