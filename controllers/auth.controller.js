@@ -3,6 +3,24 @@ const jwt = require('jsonwebtoken');
 
 const User = require('../models/User');
 
+/*exports.signup = (req, res, next) => {
+    // Mise en place d'une condition pour vérifier la validité de l'adresse mail
+    // + salage / hash du mot de passe
+    if (validator.isEmail(req.body.email, { blacklisted_chars: '$="' })) {
+        bcrypt.hash(req.body.password, 10)
+            .then(hash => {
+                const user = new User({
+                    email: req.body.email,
+                    password: hash
+                });
+                user.save()
+                    .then(() => res.status(201).json({ message: 'Utilisateur créé' }))
+                    .catch(error => res.status(400).json({ error }));
+            })
+    } else {
+        res.status(400).json({ error: "Le format de l'adresse email est invalide" });
+    }
+};*/
 
 exports.signup = (req, res, next) => {
     bcrypt.hash(req.body.password, 10)
