@@ -4,6 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require('mongoose');
+const limiter = require('./middleware/rateLimiter.middleware');
+const { default: rateLimit } = require('express-rate-limit');
 
 //Installation add-on securité
 const helmet = require('helmet');
