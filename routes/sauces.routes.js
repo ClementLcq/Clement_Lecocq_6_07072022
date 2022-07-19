@@ -5,12 +5,13 @@ const router = express.Router();
 
 const sauceCtrl = require('../controllers/sauces.controller');
 const auth = require('../middleware/auth.middleware');
-/*const verifyUser = require("../middleware/verifyUser");
-const multer = require("../middleware/multerFunctions");*/
+const multer = require("../middleware/multerFunctions");
+
+/*const verifyUser = require("../middleware/verifyUser");*/
 
 // Routes CRUD
 
-// Afficher toutes les sauces
+router.post("/", auth, multer, sauceCtrl.createSauce);
 router.get("/", auth, sauceCtrl.displaySauces);
 
 
