@@ -11,7 +11,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var authRouter = require('./routes/auth.routes');
 
 var app = express();
 app.use(helmet());
@@ -43,7 +43,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/index', indexRouter);
-app.use('/api/auth', usersRouter);
+app.use('/api/auth', authRouter);
 
 
 
