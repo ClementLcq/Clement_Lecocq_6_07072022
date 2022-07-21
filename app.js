@@ -7,6 +7,11 @@ const mongoose = require('mongoose');
 const limiter = require('./middleware/rateLimiter.middleware');
 const { default: rateLimit } = require('express-rate-limit');
 
+// Utilisation dotenv
+const dotenv = require('dotenv');
+dotenv.config();
+const url = process.env.MONGOLAB_URI;
+
 //Installation add-on securité
 const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
@@ -20,7 +25,7 @@ app.use(helmet());
 app.use(mongoSanitize());
 
 
-mongoose.connect('mongodb+srv://clementlecocq:09031990@cluster0.wipzo.mongodb.net/?retryWrites=true&w=majority', {
+mongoose.connect(url, {
         useNewUrlParser: true,
         useUnifiedTopology: true
     })
